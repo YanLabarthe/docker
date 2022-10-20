@@ -1,0 +1,19 @@
+services:
+    frontend:
+        build: ./frontend
+        ports:
+            - 8080:3000
+        command: npm start
+        volumes: 
+            - ./frontend/src/:/app/src/
+    backend:
+        build: ./backend
+        ports:
+            - 5050:5000
+        command: npm run dev
+        volumes:
+            - ./backend/src/:/app/src/
+    mongodb:
+        image: mongo
+        volumes: 
+            - ./data:/data/db
